@@ -26,14 +26,14 @@ public class DoCluster {
 		for(int i=0;i<numCluster;i++){
 			grade[i]=0;
 		}
-		//file��user�Ĺ�����¼
+		
 		File file = new File(PATH+USERRECORD+uid+EXTENSION);
 		FileInputStream fis =  new FileInputStream(file);		   
 		BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
 		try {
             String line = null;
             while ((line = reader.readLine()) != null) {
-            	//��points->�����ĸ�cluster->��Ӧ��star
+            	
             	String[] s = line.split(" ");
             	double[] point = new double[s.length-1];
             	for(int i=0;i<s.length-1;i++){
@@ -78,7 +78,7 @@ public class DoCluster {
             result.clear();
             ArrayList<String> place = new ArrayList<String>();
             while ((line = reader.readLine()) != null) {
-            	//��points->�����ĸ�cluster->���ڲ���topCluster->�ڣ�д��outputfile
+            	
             	String[] s = line.split(" ");
             	if(place.contains(s[5]+s[6]))
             		continue;
@@ -94,7 +94,7 @@ public class DoCluster {
 	            		str = str+s[i]+" ";
 	            	}
             		str = str.substring(0, str.length()-1);
-            		//writer.write(s[5]+" "+s[6]);//��γ��
+            		//writer.write(s[5]+" "+s[6]);
             		//for(int i=7;i<s.length;i++){
 	            	//	writer.write(" "+s[i]);
 	            	//}
@@ -127,7 +127,7 @@ public class DoCluster {
 		//Clustering
 		Cluster c = new Cluster(fileName);
 		KMeansModel clusters = c.doClustering(numCluster, numIteration, numRun);
-		//֮��������ÿ���û���һ��
+		
 		
 		//Grading
 		ArrayList<Integer> topClusters = dc.giveGrade(numCluster, uid, clusters);
